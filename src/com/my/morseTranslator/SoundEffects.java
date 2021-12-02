@@ -5,7 +5,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-public class soundEffects {
+public class SoundEffects {
     public static void generateTone(int hz , int msecs , int vloume , boolean addHarmonic) throws LineUnavailableException{
         float frequency = 44100;
         byte[] buf;
@@ -39,7 +39,7 @@ public class soundEffects {
     }
     public static void dit(){
         try {
-            generateTone(400, 220, (int)(25 * 1.28), true);
+            generateTone(400, 180, (int)(25 * 1.28), true);
         } catch (LineUnavailableException e) {
             e.printStackTrace();
         }

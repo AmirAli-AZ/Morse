@@ -1,6 +1,6 @@
 package com.my.morseTranslator;
 
-public class morseTranslator {
+public class MorseTranslator {
 
     private static final String[] english = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
             "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x",
@@ -91,14 +91,14 @@ public class morseTranslator {
             currentChar = s.charAt(i);
             if (currentChar == '.') {
                 Thread.sleep(500);
-                soundEffects.dit();
+                SoundEffects.dit();
             } else if (currentChar == '-') {
                 Thread.sleep(500);
-                soundEffects.dah();
+                SoundEffects.dah();
             } else if (currentChar == '|') {
                 Thread.sleep(500);
             } else if (currentChar == ' ') {
-                Thread.sleep(300);
+                Thread.sleep(200);
             }
         }
     }

@@ -10,9 +10,9 @@ public class Main {
         while (count < 3){
             Scanner s = new Scanner(System.in);
             String input = s.nextLine();
-            String translate = morseTranslator.englishToMorse(input);
+            String translate = MorseTranslator.englishToMorse(input);
             System.out.println("Converted English : " + translate);
-            morseTranslator.speck(translate);
+            MorseTranslator.speck(translate);
             count++;
         }
     }
