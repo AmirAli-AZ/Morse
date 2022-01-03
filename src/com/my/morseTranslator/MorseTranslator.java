@@ -85,7 +85,7 @@ public class MorseTranslator {
         return english.trim();
     }
 
-    public static void speck(String s) throws InterruptedException {
+    public static void speak(String s) throws InterruptedException {
         char currentChar;
         for (int i = 0; i < s.length(); i++) {
             currentChar = s.charAt(i);
