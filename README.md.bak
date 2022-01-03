@@ -9,7 +9,7 @@ while (count < 3){
    String input = s.nextLine();
    String translate = morseTranslator.englishToMorse(input);
    System.out.println("Converted English : " + translate);
-   morseTranslator.speak(translate);
+   morseTranslator.speck(translate);
    count++;
 }
 ```
