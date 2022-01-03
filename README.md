@@ -2,7 +2,7 @@
 just a simple morse translator with sound effects
 
 # Example
-```java
+```
 int count = 0;
 while (count < 3){
    Scanner s = new Scanner(System.in);
