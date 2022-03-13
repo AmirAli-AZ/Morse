@@ -1,5 +1,7 @@
 package com.my.morseTranslator;
 
+import java.util.concurrent.TimeUnit;
+
 public class MorseTranslator {
 
     private static final String[] english = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
@@ -42,63 +44,59 @@ public class MorseTranslator {
 
     public static String englishToMorse(String text) {
         String trimText = text.trim();
-        String newText = "";
-        char selectedChar;
-        String convertedChar;
+        StringBuilder newText = new StringBuilder();
         for (int i = 0; i < trimText.length(); i++) {
-            selectedChar = trimText.charAt(i);
+            char selectedChar = trimText.charAt(i);
             // encode the selected char
-            convertedChar = encode(Character.toString(selectedChar));
+            String convertedChar = encode(Character.toString(selectedChar));
             if (convertedChar.equals(" ")) {
-                newText += "| ";
+                newText.append("| ");
             } else {
-                newText += convertedChar + " ";
+                if (i == trimText.length() - 1)
+                    newText.append(convertedChar);
+                else
+                    newText.append(convertedChar).append(" ");
             }
         }
 
-        return newText.trim();
+        return newText.toString();
     }
 
     public static String morseToEnglish(String text) {
         String trimText = text.trim();
-
-        // variables
-        String english = "";
-        String selectedEnglish;
-        String convertedEnglish;
+        StringBuilder english = new StringBuilder();
         // Divide the words in the String array
         String[] morseChars = trimText.split(" ");
         for (String morseChar : morseChars) {
-            selectedEnglish = morseChar;
+            String selectedEnglish = morseChar;
             boolean endsWithWordSeparator = selectedEnglish.endsWith("|");
             // remove the Separator
             if (endsWithWordSeparator) selectedEnglish = selectedEnglish.substring(0, selectedEnglish.length() - 1);
             // decode
-            convertedEnglish = decode(selectedEnglish);
+            String convertedEnglish = decode(selectedEnglish);
 
-            english += convertedEnglish;
+            english.append(convertedEnglish);
             if (endsWithWordSeparator) {
-                english += " ";
+                english.append(" ");
             }
         }
 
-        return english.trim();
+        return english.toString();
     }
 
     public static void speak(String s) throws InterruptedException {
-        char currentChar;
         for (int i = 0; i < s.length(); i++) {
-            currentChar = s.charAt(i);
+            char currentChar = s.charAt(i);
             if (currentChar == '.') {
-                Thread.sleep(500);
+                TimeUnit.MILLISECONDS.sleep(500);
                 SoundEffects.dit();
             } else if (currentChar == '-') {
-                Thread.sleep(500);
+                TimeUnit.MILLISECONDS.sleep(500);
                 SoundEffects.dah();
             } else if (currentChar == '|') {
-                Thread.sleep(500);
+                TimeUnit.MILLISECONDS.sleep(500);
             } else if (currentChar == ' ') {
-                Thread.sleep(200);
+                TimeUnit.MILLISECONDS.sleep(500);
             }
         }
     }
